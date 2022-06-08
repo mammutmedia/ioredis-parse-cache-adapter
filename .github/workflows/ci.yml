@@ -1,0 +1,64 @@
+name: Node CI
+
+on:
+  pull_request:
+    branches:
+      - '**'
+    paths:
+      - 'src/**'
+      - 'spec/**'
+
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16']
+    name: ${{ matrix.name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependancies
+        run: npm ci
+
+      - name: Check Linting
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['12', '14', '15', '16', '17', '18']
+    name: ${{ matrix.name }}
+    services:
+      redis:
+        image: redis
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+    steps:
+      - name: Checkout
+        uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@eeb10cff27034e7acf239c5d29f62154018672fd # tag=v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependancies
+        run: npm ci
+
+      - name: Test
+        run: npm test
