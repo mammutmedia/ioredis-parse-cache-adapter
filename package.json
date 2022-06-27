@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/mammutmedia/ioredis-parse-cache-adapter#readme",
   "dependencies": {
-    "ioredis": "5.0.6",
+    "ioredis": "5.1.0",
     "lru-cache": "7.10.2"
   },
   "devDependencies": {
