@@ -35,7 +35,7 @@
   "homepage": "https://github.com/mammutmedia/ioredis-parse-cache-adapter#readme",
   "dependencies": {
     "ioredis": "5.0.6",
-    "lru-cache": "7.10.1"
+    "lru-cache": "7.10.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "6.0.1",
