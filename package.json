@@ -1,6 +1,6 @@
 {
   "name": "ioredis-parse-cache-adapter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "parse-server redis cache-adapter using ioredis",
   "main": "src/index.js",
   "license": "GPLV3",
