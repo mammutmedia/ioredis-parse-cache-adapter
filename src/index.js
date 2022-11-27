@@ -11,19 +11,19 @@ const defaultLruConfig = {
 }
 
 class IORedisCacheAdapter {
-  constructor(redisCtx, ttl = DEFAULT_REDIS_TTL, lruConfig = defaultLruConfig) {
+  constructor(redisContext, ttl = DEFAULT_REDIS_TTL, lruConfig = defaultLruConfig) {
     this.ttl = isValidTTL(ttl) ? ttl : DEFAULT_REDIS_TTL
-    this.client = new Redis(redisCtx)
+    this.client = new Redis(redisContext)
     this.map = new LRU(lruConfig)
   }
 
-  chainPromise(key, promFunc) {
+  chainPromise(key, promFunction) {
     let p = this.map.get(key)
     if (!p) {
       p = Promise.resolve()
     }
 
-    p = p.then(promFunc)
+    p = p.then(promFunction)
     this.map.set(key, p)
     return p
   }
@@ -33,11 +33,11 @@ class IORedisCacheAdapter {
       key,
       () =>
         new Promise(resolve => {
-          this.client.get(key, function (err, res) {
-            if (!res || err) {
+          this.client.get(key, function (error, response) {
+            if (!response || error) {
               return resolve(null)
             }
-            resolve(JSON.parse(res))
+            resolve(JSON.parse(response))
           })
         })
     )
@@ -49,7 +49,7 @@ class IORedisCacheAdapter {
       return this.chainPromise(key, () => Promise.resolve())
     }
 
-    if (ttl === Infinity) {
+    if (ttl === Number.POSITIVE_INFINITY) {
       return this.chainPromise(
         key,
         () =>
@@ -69,7 +69,7 @@ class IORedisCacheAdapter {
       key,
       () =>
         new Promise(resolve => {
-          if (ttl === Infinity) {
+          if (ttl === Number.POSITIVE_INFINITY) {
             this.client.set(key, value, function () {
               resolve()
             })
@@ -105,9 +105,9 @@ class IORedisCacheAdapter {
   // Used for testing
   async getAllKeys() {
     return new Promise((resolve, reject) => {
-      this.client.keys('*', (err, keys) => {
-        if (err) {
-          reject(err)
+      this.client.keys('*', (error, keys) => {
+        if (error) {
+          reject(error)
         } else {
           resolve(keys)
         }

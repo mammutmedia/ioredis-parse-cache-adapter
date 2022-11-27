@@ -18,7 +18,7 @@ describe('IORedisAdapter tests', () => {
 
   it('should get/set/clear', done => {
     const cacheNaN = new IORedisCacheAdapter({
-      ttl: NaN
+      ttl: Number.NaN
     })
 
     cacheNaN
@@ -53,7 +53,7 @@ describe('IORedisAdapter tests', () => {
 
   it('should not expire when ttl=Infinity', done => {
     cache
-      .put(KEY, VALUE, Infinity)
+      .put(KEY, VALUE, Number.POSITIVE_INFINITY)
       .then(() => cache.get(KEY))
       .then(value => expect(value).toEqual(VALUE))
       .then(wait.bind(null, 102))
@@ -66,7 +66,7 @@ describe('IORedisAdapter tests', () => {
     let promise = Promise.resolve()
     const values = [-100, null, undefined, 'not number', true]
 
-    values.forEach(ttl => {
+    for (const ttl of values) {
       promise = promise.then(() =>
         cache
           .put(KEY, VALUE, ttl)
@@ -76,7 +76,7 @@ describe('IORedisAdapter tests', () => {
           .then(() => cache.get(KEY))
           .then(value => expect(value).toEqual(null))
       )
-    })
+    }
 
     promise.then(done)
   })
