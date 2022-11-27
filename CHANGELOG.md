@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.0.10...1.1.0) (2022-11-27)
+
+
+### Features
+
+* add redis cluster support ([1d163ff](https://github.com/mammutmedia/ioredis-parse-cache-adapter/commit/1d163ff2471b9ebc3c6c707832ad6ddf78cc53e1))
+
 ## [1.0.10](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.0.9...1.0.10) (2022-11-27)
 
 
