@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.1.2...1.1.3) (2023-01-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ioredis to v5.3.0 ([944f5f7](https://github.com/mammutmedia/ioredis-parse-cache-adapter/commit/944f5f712f1c5d29c68a140179a0dce6519e2da1))
+
 ## [1.1.2](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.1.1...1.1.2) (2023-01-28)
 
 
