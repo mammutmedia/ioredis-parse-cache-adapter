@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.1.7...1.1.8) (2023-02-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lru-cache to v7.16.2 ([c52abc0](https://github.com/mammutmedia/ioredis-parse-cache-adapter/commit/c52abc067822484dddd5c50940cd94512c69a152))
+
 ## [1.1.7](https://github.com/mammutmedia/ioredis-parse-cache-adapter/compare/1.1.6...1.1.7) (2023-02-21)
 
 
