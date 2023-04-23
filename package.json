@@ -31,7 +31,7 @@
   "engines": {
     "node": ">=14.18.0"
   },
-  "author": "Mammut Media Marketing UG",
+  "author": "Mammut Media GmbH",
   "bugs": {
     "url": "https://github.com/mammutmedia/ioredis-parse-cache-adapter/issues"
   },
