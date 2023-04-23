@@ -7,6 +7,11 @@ on:
     paths:
       - 'src/**'
       - 'spec/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.nycrc'
+      - '.eslintignore'
+      - '.eslintrc.js'
 
   workflow_dispatch:
 
